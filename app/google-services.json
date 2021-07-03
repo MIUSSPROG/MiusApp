@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "504835774568",
+    "project_id": "miusapp-17d9a",
+    "storage_bucket": "miusapp-17d9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504835774568:android:67141901fbaff7bff943dd",
+        "android_client_info": {
+          "package_name": "com.example.miusapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504835774568-fg5be4jv9sq5mp52n7ij8j55fokg3cuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByEZlejtaWmyTqJ_76WJllvZP81j5AnKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504835774568-fg5be4jv9sq5mp52n7ij8j55fokg3cuu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504835774568-r6ssmf3e0t33nkho23qfu8enits0nshb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vongu3.com.MiusLogin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
