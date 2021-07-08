@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, pass)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Успешный вход!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, NavigationActivity::class.java))
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Произошла ошибка!", Toast.LENGTH_SHORT).show()
