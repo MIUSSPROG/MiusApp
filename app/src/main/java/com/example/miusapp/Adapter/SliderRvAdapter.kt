@@ -2,12 +2,14 @@ package com.example.miusapp.Adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.miusapp.DetailNavigationActivity
 import com.example.miusapp.Model.SliderRvItem
 import com.example.miusapp.R
 
@@ -33,7 +35,10 @@ class SliderRvAdapter internal constructor(
             desc.text = data.desc
             count.text = data.count.toString()
             itemView.setOnClickListener {
-                Toast.makeText(context, desc.text, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, desc.text, Toast.LENGTH_SHORT).show()\
+                val intent = Intent(context, DetailNavigationActivity::class.java)
+                intent.putExtra("desc", data.desc)
+                context.startActivity(intent)
             }
         }
     }
