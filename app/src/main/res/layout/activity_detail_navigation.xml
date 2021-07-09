@@ -49,15 +49,15 @@
         android:id="@+id/circleIndicator3"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        app:ci_drawable="@drawable/circle_indicator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:ci_drawable="@drawable/circle_indicator"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerNavDetail"
-        android:layout_width="391dp"
-        android:layout_height="646dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -7,18 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miusapp.DetailNavigationActivity
+import com.example.miusapp.Model.SliderDetailRvItem
 import com.example.miusapp.Model.SliderRvItem
 import com.example.miusapp.R
 
-class SliderRvAdapter internal constructor(
-    items: List<SliderRvItem>,
+class SliderDetailRvAdapter internal constructor(
+    items: List<SliderDetailRvItem>,
     context: Context
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var items: List<SliderRvItem> = ArrayList()
+    private var items: List<SliderDetailRvItem> = ArrayList()
     var context: Context
 
     init {
@@ -26,30 +26,28 @@ class SliderRvAdapter internal constructor(
         this.context = context
     }
 
-    class SliderRvViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val desc: TextView = itemView.findViewById(R.id.tv_desc_rv_item)
-        val count: TextView = itemView.findViewById(R.id.tv_count_rv_item)
+
+    class SliderDetailRvViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
+        private val desc: TextView = itemView.findViewById(R.id.tv_nav_detail_row_desc)
+        private val rowNum: TextView = itemView.findViewById(R.id.tv_nav_detail_row_num)
 
         @SuppressLint("ResourceType")
-        fun bind(context: Context, data: SliderRvItem){
+        fun bind(context: Context, data: SliderDetailRvItem, position: Int){
             desc.text = data.desc
-            count.text = data.count.toString()
-            itemView.setOnClickListener {
-                val intent = Intent(context, DetailNavigationActivity::class.java)
-                intent.putExtra("desc", data.desc)
-                context.startActivity(intent)
-            }
+            rowNum.text = position.toString()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return SliderRvViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.rv_item, parent, false))
+        return SliderDetailRvViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.rv_item_detail, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
-            is SliderRvViewHolder -> {
-                holder.bind(context, items[position])
+            is SliderDetailRvViewHolder -> {
+                holder.bind(context, items[position], position + 1)
             }
         }
     }

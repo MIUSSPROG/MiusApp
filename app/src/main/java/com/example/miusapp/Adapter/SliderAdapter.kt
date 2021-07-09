@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miusapp.Model.SliderItem
 import com.example.miusapp.R
-
 class SliderAdapter internal constructor(
     sliderItems: MutableList<SliderItem>,
     context: Context
