@@ -30,7 +30,7 @@ class SliderAdapter internal constructor(
             textView.text = sliderItem.title
             textView.setBackgroundResource(sliderItem.background)
 
-            val rvAdapter = SliderRvAdapter(sliderItem.items, context)
+            val rvAdapter = SliderRvAdapter(sliderItem.items,sliderItem.title, sliderItem.background,  context)
             rv.adapter = rvAdapter
         }
     }

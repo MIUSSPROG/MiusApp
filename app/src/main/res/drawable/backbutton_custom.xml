@@ -5,6 +5,6 @@
         android:topRightRadius="30dp"
         android:bottomRightRadius="30dp"/>
 
-    <solid android:color="#A44581"/>
+    <solid android:color="@color/selected_menu_color"/>
 
 </shape>

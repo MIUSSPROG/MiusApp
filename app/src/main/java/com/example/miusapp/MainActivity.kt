@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.example.miusapp.Utils.prefs
 import com.example.miusapp.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         if (email.isNotEmpty() && pass.isNotEmpty()) {
             auth.signInWithEmailAndPassword(email, pass)
                 .addOnSuccessListener {
+                    prefs.myUUId = auth.currentUser?.uid.toString()
                     Toast.makeText(this, "Успешный вход!", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, NavigationActivity::class.java))
                 }

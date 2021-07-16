@@ -38,11 +38,12 @@ class RegActivity : AppCompatActivity() {
             if (pass == confirmPass) {
                 auth.createUserWithEmailAndPassword(email, pass).addOnSuccessListener {
 
+                    val userId = auth.currentUser!!.uid
                     val user: MutableMap<String, Any> = HashMap()
                     user["email"] = email
                     user["name"] = name
 
-                    db.collection("Users").add(user)
+                    db.collection("Users").document(userId).set(user)
                         .addOnSuccessListener {
                             Toast.makeText(this, "Вы успешно зарегистрировались!", Toast.LENGTH_SHORT).show()
                             Handler(Looper.getMainLooper()).postDelayed({

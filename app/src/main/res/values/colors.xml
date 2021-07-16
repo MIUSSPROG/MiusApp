@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="selected_menu_color">#FD6B77</color>
+    <color name="selected_menu_color">#E1747E</color>
     <color name="unselected_menu_color">#DCDCDC</color>
 
     <color name="mainBack">#EEF2FC</color>

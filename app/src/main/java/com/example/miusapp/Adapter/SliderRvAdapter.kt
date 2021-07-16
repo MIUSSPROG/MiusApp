@@ -15,15 +15,21 @@ import com.example.miusapp.R
 
 class SliderRvAdapter internal constructor(
     items: List<SliderRvItem>,
+    title: String,
+    background: Int,
     context: Context
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items: List<SliderRvItem> = ArrayList()
+    private var title: String
+    private var background: Int
     var context: Context
 
     init {
         this.items = items
         this.context = context
+        this.title = title
+        this.background = background
     }
 
     class SliderRvViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -31,12 +37,14 @@ class SliderRvAdapter internal constructor(
         val count: TextView = itemView.findViewById(R.id.tv_count_rv_item)
 
         @SuppressLint("ResourceType")
-        fun bind(context: Context, data: SliderRvItem){
+        fun bind(context: Context, data: SliderRvItem, title: String, background: Int){
             desc.text = data.desc
             count.text = data.count.toString()
             itemView.setOnClickListener {
                 val intent = Intent(context, DetailNavigationActivity::class.java)
                 intent.putExtra("desc", data.desc)
+                intent.putExtra("title", title)
+                intent.putExtra("background", background)
                 context.startActivity(intent)
             }
         }
@@ -49,7 +57,7 @@ class SliderRvAdapter internal constructor(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is SliderRvViewHolder -> {
-                holder.bind(context, items[position])
+                holder.bind(context, items[position], title, background)
             }
         }
     }
