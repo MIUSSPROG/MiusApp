@@ -42,11 +42,13 @@ class AddItemFragment : BottomSheetDialogFragment() {
                 .add(info)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Секция создана!", Toast.LENGTH_SHORT).show()
+                    binding.etItemTextToSave.setText("")
                     this.dismiss()
                 }
                 .addOnFailureListener {
                     Toast.makeText(requireContext(), "Произошла ошибка", Toast.LENGTH_SHORT).show()
                 }
+
         }
 
         binding.btnCancelAddItemByDesc.setOnClickListener {

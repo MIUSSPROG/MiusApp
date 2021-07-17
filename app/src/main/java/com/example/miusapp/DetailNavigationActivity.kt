@@ -1,22 +1,17 @@
 package com.example.miusapp
 
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.Slide
 import androidx.viewpager2.widget.ViewPager2
 import com.example.miusapp.Adapter.SliderDetailAdapter
 import com.example.miusapp.Fragments.AddItemFragment
 import com.example.miusapp.Model.FirebaseModel
 import com.example.miusapp.Model.SliderDetailItem
 import com.example.miusapp.Model.SliderDetailRvItem
-import com.example.miusapp.Model.SliderItem
 import com.example.miusapp.Utils.prefs
 import com.example.miusapp.databinding.ActivityDetailNavigationBinding
-import com.example.miusapp.databinding.ActivityMainBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DetailNavigationActivity : AppCompatActivity() {
@@ -254,7 +249,7 @@ class DetailNavigationActivity : AppCompatActivity() {
                 }
 
                 value?.let {
-//                    clearItemLists()
+                    clearItemLists(title)
                     for(document in it.documents){
                         val newData = document.toObject(FirebaseModel::class.java)
                         if (newData != null) {
@@ -362,56 +357,70 @@ class DetailNavigationActivity : AppCompatActivity() {
 
 
                     binding.viewPagerNavDetail.adapter = SliderDetailAdapter(categoryItems, this)
-                    binding.viewPagerNavDetail.currentItem = positionToGo
+                    if(position == -1) {
+                        binding.viewPagerNavDetail.currentItem = positionToGo
+                    }
+                    else{
+                        binding.viewPagerNavDetail.currentItem = position
+                    }
                     binding.circleIndicator3.setViewPager(binding.viewPagerNavDetail)
                 }
             }
     }
 
-    private fun clearItemLists() {
-        program1Items.clear()
-        program2Items.clear()
-        program3Items.clear()
-        program4Items.clear()
-        program5Items.clear()
-        program6Items.clear()
-
-        project1Items.clear()
-        project2Items.clear()
-        project3Items.clear()
-        project4Items.clear()
-        project5Items.clear()
-        project6Items.clear()
-        project7Items.clear()
-        project8Items.clear()
-
-        qualification1Items.clear()
-        qualification2Items.clear()
-        qualification3Items.clear()
-        qualification4Items.clear()
-        qualification5Items.clear()
-        qualification6Items.clear()
-        qualification7Items.clear()
-        qualification8Items.clear()
-
-        achievement1Items.clear()
-        achievement2Items.clear()
-        achievement3Items.clear()
-        achievement4Items.clear()
-
-        result1Items.clear()
-        result2Items.clear()
-        result3Items.clear()
-        result4Items.clear()
-        result5Items.clear()
-
-        plan1Items.clear()
-        plan2Items.clear()
-        plan3Items.clear()
-        plan4Items.clear()
-        plan5Items.clear()
-        plan6Items.clear()
-        plan7Items.clear()
+    private fun clearItemLists(title: String) {
+        when(title){
+            resources.getString(R.string.sliderItem1) ->{
+                program1Items.clear()
+                program2Items.clear()
+                program3Items.clear()
+                program4Items.clear()
+                program5Items.clear()
+                program6Items.clear()
+            }
+            resources.getString(R.string.sliderItem2) ->{
+                project1Items.clear()
+                project2Items.clear()
+                project3Items.clear()
+                project4Items.clear()
+                project5Items.clear()
+                project6Items.clear()
+                project7Items.clear()
+                project8Items.clear()
+            }
+            resources.getString(R.string.sliderItem3) ->{
+                qualification1Items.clear()
+                qualification2Items.clear()
+                qualification3Items.clear()
+                qualification4Items.clear()
+                qualification5Items.clear()
+                qualification6Items.clear()
+                qualification7Items.clear()
+                qualification8Items.clear()
+            }
+            resources.getString(R.string.sliderItem4) ->{
+                achievement1Items.clear()
+                achievement2Items.clear()
+                achievement3Items.clear()
+                achievement4Items.clear()
+            }
+            resources.getString(R.string.sliderItem5) ->{
+                result1Items.clear()
+                result2Items.clear()
+                result3Items.clear()
+                result4Items.clear()
+                result5Items.clear()
+            }
+            resources.getString(R.string.sliderItem6) ->{
+                plan1Items.clear()
+                plan2Items.clear()
+                plan3Items.clear()
+                plan4Items.clear()
+                plan5Items.clear()
+                plan6Items.clear()
+                plan7Items.clear()
+            }
+        }
     }
 
     private fun getItemByPosition(title: String, position: Int): String{
