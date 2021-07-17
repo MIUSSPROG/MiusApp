@@ -1,5 +1,6 @@
 package com.example.miusapp
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Slide
 import androidx.viewpager2.widget.ViewPager2
 import com.example.miusapp.Adapter.SliderDetailAdapter
+import com.example.miusapp.Fragments.AddItemFragment
 import com.example.miusapp.Model.FirebaseModel
 import com.example.miusapp.Model.SliderDetailItem
 import com.example.miusapp.Model.SliderDetailRvItem
@@ -66,6 +68,14 @@ class DetailNavigationActivity : AppCompatActivity() {
     private lateinit var plan6Items: MutableList<SliderDetailRvItem>
     private lateinit var plan7Items: MutableList<SliderDetailRvItem>
 
+    private lateinit var programItems: Array<String>
+    private lateinit var projectItems: Array<String>
+    private lateinit var qualificationItems: Array<String>
+    private lateinit var achievementItems: Array<String>
+    private lateinit var resultItems: Array<String>
+    private lateinit var planItems: Array<String>
+
+    private var bottomSheet = AddItemFragment()
     private var categoryItems: MutableList<SliderDetailItem> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,11 +86,17 @@ class DetailNavigationActivity : AppCompatActivity() {
 
         db = FirebaseFirestore.getInstance()
 
-//        var desc = intent.extras?.get("desc").toString()
+        programItems = resources.getStringArray(R.array.programs)
+        projectItems = resources.getStringArray(R.array.projects)
+        qualificationItems = resources.getStringArray(R.array.qualifications)
+        achievementItems = resources.getStringArray(R.array.achievements)
+        resultItems = resources.getStringArray(R.array.results)
+        planItems = resources.getStringArray(R.array.plans)
+
         var desc = prefs.myDesc
-//        desc = desc.replace("/",",")
         val title = intent.extras?.get("title").toString()
         val background = intent.extras?.get("background").toString().toInt()
+        val positionToGo = intent.extras?.get("position").toString().toInt()
         binding.tvTitleNavDetail.text = title
 
         binding.viewPagerNavDetail.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
@@ -92,7 +108,19 @@ class DetailNavigationActivity : AppCompatActivity() {
 
         binding.fabAddItem.setOnClickListener {
 
-            Toast.makeText(this, position.toString(), Toast.LENGTH_LONG).show()
+//                val intent = Intent(this, AddItemToCategory::class.java)
+//                intent.putExtra("itemTitle", getItemByPosition(title, position))
+//                startActivity(intent)
+
+            if(!bottomSheet.isAdded){
+                val bundle = Bundle()
+                bundle.putString("itemTitle", getItemByPosition(title, position))
+                bundle.putString("mainTitle", title)
+                bundle.putInt("background", background)
+                bottomSheet.arguments = bundle
+                bottomSheet.show(supportFragmentManager, "")
+            }
+
 //            val info: MutableMap<String, Any> = HashMap()
 //            info["question"] = desc
 //            val rand = (0..100).random()
@@ -192,20 +220,20 @@ class DetailNavigationActivity : AppCompatActivity() {
                 qualification7Items = ArrayList()
                 qualification8Items = ArrayList()
             }
-            resources.getString(R.string.sliderItem3) -> {
+            resources.getString(R.string.sliderItem4) -> {
                 achievement1Items = ArrayList()
                 achievement2Items = ArrayList()
                 achievement3Items = ArrayList()
                 achievement4Items = ArrayList()
             }
-            resources.getString(R.string.sliderItem4) -> {
+            resources.getString(R.string.sliderItem5) -> {
                 result1Items = ArrayList()
                 result2Items = ArrayList()
                 result3Items = ArrayList()
                 result4Items = ArrayList()
                 result5Items = ArrayList()
             }
-            resources.getString(R.string.sliderItem5) -> {
+            resources.getString(R.string.sliderItem6) -> {
                 plan1Items = ArrayList()
                 plan2Items = ArrayList()
                 plan3Items = ArrayList()
@@ -216,12 +244,6 @@ class DetailNavigationActivity : AppCompatActivity() {
             }
         }
 
-        val programItems = resources.getStringArray(R.array.programs)
-        val projectItems = resources.getStringArray(R.array.projects)
-        val qualificationItems = resources.getStringArray(R.array.qualifications)
-        val achievementItems = resources.getStringArray(R.array.achievements)
-        val resultItems = resources.getStringArray(R.array.results)
-        val planItems = resources.getStringArray(R.array.plans)
 
         db.collection("Users").document(prefs.myUUId)
             .collection("Секции").document(title).collection("questions")
@@ -232,6 +254,7 @@ class DetailNavigationActivity : AppCompatActivity() {
                 }
 
                 value?.let {
+//                    clearItemLists()
                     for(document in it.documents){
                         val newData = document.toObject(FirebaseModel::class.java)
                         if (newData != null) {
@@ -338,11 +361,69 @@ class DetailNavigationActivity : AppCompatActivity() {
                     }
 
 
-                    binding.viewPagerNavDetail.adapter = SliderDetailAdapter(categoryItems, this, getDrawable(R.drawable.left_rounded1)!!)
+                    binding.viewPagerNavDetail.adapter = SliderDetailAdapter(categoryItems, this)
+                    binding.viewPagerNavDetail.currentItem = positionToGo
                     binding.circleIndicator3.setViewPager(binding.viewPagerNavDetail)
                 }
             }
+    }
 
+    private fun clearItemLists() {
+        program1Items.clear()
+        program2Items.clear()
+        program3Items.clear()
+        program4Items.clear()
+        program5Items.clear()
+        program6Items.clear()
+
+        project1Items.clear()
+        project2Items.clear()
+        project3Items.clear()
+        project4Items.clear()
+        project5Items.clear()
+        project6Items.clear()
+        project7Items.clear()
+        project8Items.clear()
+
+        qualification1Items.clear()
+        qualification2Items.clear()
+        qualification3Items.clear()
+        qualification4Items.clear()
+        qualification5Items.clear()
+        qualification6Items.clear()
+        qualification7Items.clear()
+        qualification8Items.clear()
+
+        achievement1Items.clear()
+        achievement2Items.clear()
+        achievement3Items.clear()
+        achievement4Items.clear()
+
+        result1Items.clear()
+        result2Items.clear()
+        result3Items.clear()
+        result4Items.clear()
+        result5Items.clear()
+
+        plan1Items.clear()
+        plan2Items.clear()
+        plan3Items.clear()
+        plan4Items.clear()
+        plan5Items.clear()
+        plan6Items.clear()
+        plan7Items.clear()
+    }
+
+    private fun getItemByPosition(title: String, position: Int): String{
+        return when(title){
+            resources.getString(R.string.sliderItem1) -> programItems[position]
+            resources.getString(R.string.sliderItem2) -> projectItems[position]
+            resources.getString(R.string.sliderItem3) -> qualificationItems[position]
+            resources.getString(R.string.sliderItem4) -> achievementItems[position]
+            resources.getString(R.string.sliderItem5) -> resultItems[position]
+            resources.getString(R.string.sliderItem6) -> planItems[position]
+            else -> ""
+        }
     }
 
     private fun getTitleDrawable(background: Int) : Drawable? {

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miusapp.AddItemToCategory
 import com.example.miusapp.DetailNavigationActivity
@@ -17,18 +18,15 @@ import com.example.miusapp.Utils.prefs
 
 class SliderDetailAdapter internal constructor(
     detailItems: MutableList<SliderDetailItem>,
-    context: Context,
-    background: Drawable
+    context: Context
 ): RecyclerView.Adapter<SliderDetailAdapter.SliderDetailViewHolder>() {
 
     private val detailItems: List<SliderDetailItem>
     private var context: Context
-    private val background: Drawable
 
     init {
         this.detailItems = detailItems
         this.context = context
-        this.background = background
     }
 
     class SliderDetailViewHolder(itemView: View, context: Context) : RecyclerView.ViewHolder(itemView){
@@ -46,7 +44,7 @@ class SliderDetailAdapter internal constructor(
     override fun onBindViewHolder(holder: SliderDetailViewHolder, position: Int) {
         prefs.myDesc = detailItems[position].title
         holder.tvDetailTitle.text = detailItems[position].title
-        holder.rvDetail.adapter = SliderDetailRvAdapter(detailItems[position].items!!, context, background)
+        holder.rvDetail.adapter = SliderDetailRvAdapter(detailItems[position].items!!, context)
     }
 
 

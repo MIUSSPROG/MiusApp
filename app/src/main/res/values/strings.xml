@@ -94,5 +94,5 @@
         <item>В 2021-2022 уч. году планируется проведение семинаров и круглых столов формат: "педагог педагогу". Перечислите темы, которые вам было бы интересно обсудить или послушать, а так де темы, с которыми вы бы могли выступить перед коллегами</item>
     </string-array>
 
-       <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

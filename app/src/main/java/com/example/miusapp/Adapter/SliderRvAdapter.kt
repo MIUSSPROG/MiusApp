@@ -37,7 +37,7 @@ class SliderRvAdapter internal constructor(
         val count: TextView = itemView.findViewById(R.id.tv_count_rv_item)
 
         @SuppressLint("ResourceType")
-        fun bind(context: Context, data: SliderRvItem, title: String, background: Int){
+        fun bind(context: Context, data: SliderRvItem, title: String, background: Int, position: Int){
             desc.text = data.desc
             count.text = data.count.toString()
             itemView.setOnClickListener {
@@ -45,6 +45,7 @@ class SliderRvAdapter internal constructor(
                 intent.putExtra("desc", data.desc)
                 intent.putExtra("title", title)
                 intent.putExtra("background", background)
+                intent.putExtra("position", position)
                 context.startActivity(intent)
             }
         }
@@ -57,7 +58,7 @@ class SliderRvAdapter internal constructor(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is SliderRvViewHolder -> {
-                holder.bind(context, items[position], title, background)
+                holder.bind(context, items[position], title, background, position)
             }
         }
     }

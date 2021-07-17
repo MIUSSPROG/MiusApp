@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miusapp.AddItemToCategory
 import com.example.miusapp.DetailNavigationActivity
@@ -18,17 +19,14 @@ import com.example.miusapp.R
 class SliderDetailRvAdapter internal constructor(
     items: List<SliderDetailRvItem>,
     context: Context,
-    background: Drawable
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items: List<SliderDetailRvItem> = ArrayList()
     var context: Context
-    val background: Drawable
 
     init {
         this.items = items
         this.context = context
-        this.background = background
     }
 
 
@@ -42,9 +40,10 @@ class SliderDetailRvAdapter internal constructor(
             rowNum.text = position.toString()
             rowNum.background = data.background
             itemView.setOnClickListener {
-                val intent = Intent(context, AddItemToCategory::class.java)
-                intent.putExtra("itemTitle", data.desc)
-                context.startActivity(intent)
+                Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show()
+//                val intent = Intent(context, AddItemToCategory::class.java)
+//                intent.putExtra("itemTitle", data.desc)
+//                context.startActivity(intent)
             }
         }
     }

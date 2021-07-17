@@ -12,4 +12,11 @@
     <color name="unselected_menu_color">#DCDCDC</color>
 
     <color name="mainBack">#EEF2FC</color>
+
+    <color name="color1">#208ECE</color>
+    <color name="color2">#E3137E</color>
+    <color name="color3">#FECC08</color>
+    <color name="color4">#A44581</color>
+    <color name="color5">#F0803F</color>
+    <color name="color6">#7A4694</color>
 </resources>

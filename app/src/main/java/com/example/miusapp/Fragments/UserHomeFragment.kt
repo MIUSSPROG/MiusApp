@@ -105,5 +105,4 @@ class UserHomeFragment : Fragment() {
 
         return binding.root
     }
-
 }
