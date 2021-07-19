@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miusapp.DetailNavigationActivity
 import com.example.miusapp.Model.SliderRvItem
@@ -34,12 +33,16 @@ class SliderRvAdapter internal constructor(
 
     class SliderRvViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
         val desc: TextView = itemView.findViewById(R.id.tv_desc_rv_item)
-        val count: TextView = itemView.findViewById(R.id.tv_count_rv_item)
+        val count1: TextView = itemView.findViewById(R.id.tv_count1_rv_item)
+        val count2: TextView = itemView.findViewById(R.id.tv_count2_rv_item)
+        val count3: TextView = itemView.findViewById(R.id.tv_count3_rv_item)
 
         @SuppressLint("ResourceType")
         fun bind(context: Context, data: SliderRvItem, title: String, background: Int, position: Int){
             desc.text = data.desc
-            count.text = data.count.toString()
+            count1.text = (data.count%10).toString()
+            count2.text = ((data.count/10)%10).toString()
+            count3.text = (data.count/100).toString()
             itemView.setOnClickListener {
                 val intent = Intent(context, DetailNavigationActivity::class.java)
                 intent.putExtra("desc", data.desc)
