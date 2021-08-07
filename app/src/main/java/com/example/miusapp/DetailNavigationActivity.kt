@@ -1,5 +1,6 @@
 package com.example.miusapp
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -53,7 +54,7 @@ class DetailNavigationActivity : AppCompatActivity() {
     private lateinit var result2Items: MutableList<SliderDetailRvItem>
     private lateinit var result3Items: MutableList<SliderDetailRvItem>
     private lateinit var result4Items: MutableList<SliderDetailRvItem>
-    private lateinit var result5Items: MutableList<SliderDetailRvItem>
+//    private lateinit var result5Items: MutableList<SliderDetailRvItem>
 
     private lateinit var plan1Items: MutableList<SliderDetailRvItem>
     private lateinit var plan2Items: MutableList<SliderDetailRvItem>
@@ -100,6 +101,10 @@ class DetailNavigationActivity : AppCompatActivity() {
                 this@DetailNavigationActivity.position = position
             }
         })
+
+        binding.btnBack.setOnClickListener{
+            startActivity(Intent(this, NavigationActivity::class.java))
+        }
 
         binding.fabAddItem.setOnClickListener {
 
@@ -226,7 +231,7 @@ class DetailNavigationActivity : AppCompatActivity() {
                 result2Items = ArrayList()
                 result3Items = ArrayList()
                 result4Items = ArrayList()
-                result5Items = ArrayList()
+//                result5Items = ArrayList()
             }
             resources.getString(R.string.sliderItem6) -> {
                 plan1Items = ArrayList()
@@ -288,7 +293,7 @@ class DetailNavigationActivity : AppCompatActivity() {
                                 resultItems[1] -> result2Items.add(SliderDetailRvItem(newData.id, newData.answer, getTitleDrawable(background)))
                                 resultItems[2] -> result3Items.add(SliderDetailRvItem(newData.id, newData.answer, getTitleDrawable(background)))
                                 resultItems[3] -> result4Items.add(SliderDetailRvItem(newData.id, newData.answer, getTitleDrawable(background)))
-                                resultItems[4] -> result5Items.add(SliderDetailRvItem(newData.id, newData.answer, getTitleDrawable(background)))
+//                                resultItems[4] -> result5Items.add(SliderDetailRvItem(newData.id, newData.answer, getTitleDrawable(background)))
 
                                 planItems[0] -> plan1Items.add(SliderDetailRvItem(newData.id, newData.answer, getTitleDrawable(background)))
                                 planItems[1] -> plan2Items.add(SliderDetailRvItem(newData.id, newData.answer, getTitleDrawable(background)))
@@ -342,7 +347,7 @@ class DetailNavigationActivity : AppCompatActivity() {
                             categoryItems.add(SliderDetailItem(resultItems[1], result2Items))
                             categoryItems.add(SliderDetailItem(resultItems[2], result3Items))
                             categoryItems.add(SliderDetailItem(resultItems[3], result4Items))
-                            categoryItems.add(SliderDetailItem(resultItems[4], result5Items))
+//                            categoryItems.add(SliderDetailItem(resultItems[4], result5Items))
                         }
                         resources.getString(R.string.sliderItem6) -> {
                             categoryItems.add(SliderDetailItem(planItems[0], plan1Items))
@@ -409,7 +414,7 @@ class DetailNavigationActivity : AppCompatActivity() {
                 result2Items.clear()
                 result3Items.clear()
                 result4Items.clear()
-                result5Items.clear()
+//                result5Items.clear()
             }
             resources.getString(R.string.sliderItem6) ->{
                 plan1Items.clear()

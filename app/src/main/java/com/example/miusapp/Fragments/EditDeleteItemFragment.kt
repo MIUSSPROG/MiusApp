@@ -45,6 +45,7 @@ class EditDeleteItemFragment : BottomSheetDialogFragment() {
                 .update("answer", binding.etItemTextToEditDelete.text.toString())
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Изменения сохранены!", Toast.LENGTH_SHORT).show()
+                    this.dismiss()
                 }
                 .addOnFailureListener {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()

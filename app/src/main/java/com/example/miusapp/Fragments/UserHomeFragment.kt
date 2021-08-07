@@ -234,7 +234,7 @@ class UserHomeFragment : Fragment() {
                                 resultItems[1] -> resultItemsCount[resultItems[1]] = (resultItemsCount[resultItems[1]] ?: 0) + 1
                                 resultItems[2] -> resultItemsCount[resultItems[2]] = (resultItemsCount[resultItems[2]] ?: 0) + 1
                                 resultItems[3] -> resultItemsCount[resultItems[3]] = (resultItemsCount[resultItems[3]] ?: 0) + 1
-                                resultItems[4] -> resultItemsCount[resultItems[4]] = (resultItemsCount[resultItems[4]] ?: 0) + 1
+//                                resultItems[4] -> resultItemsCount[resultItems[4]] = (resultItemsCount[resultItems[4]] ?: 0) + 1
                             }
                         }
                     }
@@ -244,7 +244,7 @@ class UserHomeFragment : Fragment() {
                     results.add(SliderRvItem(resultItems[1], resultItemsCount[resultItems[1]] ?: 0))
                     results.add(SliderRvItem(resultItems[2], resultItemsCount[resultItems[2]] ?: 0))
                     results.add(SliderRvItem(resultItems[3], resultItemsCount[resultItems[3]] ?: 0))
-                    results.add(SliderRvItem(resultItems[4], resultItemsCount[resultItems[4]] ?: 0))
+//                    results.add(SliderRvItem(resultItems[4], resultItemsCount[resultItems[4]] ?: 0))
 
                     sliderItems.add(SliderItem(sliderResourceItems[4], R.drawable.rounded5, results))
                     binding.viewPager.adapter?.notifyDataSetChanged()

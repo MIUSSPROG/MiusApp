@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(prefs.myUUId.isNotEmpty()){
+            startActivity(Intent(this, NavigationActivity::class.java))
+        }
+
         auth = FirebaseAuth.getInstance()
     }
 
