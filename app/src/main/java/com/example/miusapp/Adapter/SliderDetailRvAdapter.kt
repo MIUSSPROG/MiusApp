@@ -21,12 +21,14 @@ import com.example.miusapp.Model.SliderRvItem
 import com.example.miusapp.R
 
 class SliderDetailRvAdapter internal constructor(
+    categoryTitle: String,
     title: String,
     items: List<SliderDetailRvItem>,
     context: Context,
     fragmentManager: FragmentManager
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private var categoryTitle: String = categoryTitle
     private var title: String
     private var items: List<SliderDetailRvItem> = ArrayList()
     var context: Context
@@ -46,7 +48,7 @@ class SliderDetailRvAdapter internal constructor(
         private var bottomSheet = EditDeleteItemFragment()
 
         @SuppressLint("ResourceType")
-        fun bind(context: Context, title: String, data: SliderDetailRvItem, position: Int, fragmentManager: FragmentManager){
+        fun bind(context: Context, categoryTitle: String, title: String, data: SliderDetailRvItem, position: Int, fragmentManager: FragmentManager){
             desc.text = data.desc
             rowNum.text = position.toString()
             rowNum.background = data.background
@@ -54,8 +56,10 @@ class SliderDetailRvAdapter internal constructor(
                 Toast.makeText(context, "this -> $position", Toast.LENGTH_SHORT).show()
                 if(!bottomSheet.isAdded){
                     val bundle = Bundle()
-                    bundle.putString("itemTitle", data.desc)
-                    bundle.putString("mainTitle", title)
+                    bundle.putString("itemAnswer", data.desc)
+                    bundle.putString("itemId", data.questionId)
+                    bundle.putString("title", title)
+                    bundle.putString("categoryTitle", categoryTitle)
                     bottomSheet.arguments = bundle
                     bottomSheet.show(fragmentManager, "")
                 }
@@ -75,7 +79,7 @@ class SliderDetailRvAdapter internal constructor(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is SliderDetailRvViewHolder -> {
-                holder.bind(context, title,  items[position], position + 1, fragmentManager)
+                holder.bind(context, categoryTitle,  title, items[position], position + 1, fragmentManager)
             }
         }
     }

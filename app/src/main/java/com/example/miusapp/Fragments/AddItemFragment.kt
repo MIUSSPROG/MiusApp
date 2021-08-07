@@ -32,17 +32,18 @@ class AddItemFragment : BottomSheetDialogFragment() {
 //        binding.topLine.background = getTitleDrawable(background)
 
         binding.btnSaveItembyDesc.setOnClickListener {
+
+            db = FirebaseFirestore.getInstance()
+            val newQuestionId = db.collection("questions").document().id
+
             val info: MutableMap<String, Any> = HashMap()
             info["question"] = desc
             info["answer"] = binding.etItemTextToSave.text.toString()
+            info["id"] = newQuestionId
 
-            val newQuestionRef = db.collection("Users").document(prefs.myUUId)
-                .collection("Секции").document(title).collection("questions").document()
-
-            db = FirebaseFirestore.getInstance()
             db.collection("Users").document(prefs.myUUId)
                 .collection("Секции").document(title).collection("questions")
-                .document(newQuestionRef.toString())
+                .document(newQuestionId)
                 .set(info)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Секция создана!", Toast.LENGTH_SHORT).show()

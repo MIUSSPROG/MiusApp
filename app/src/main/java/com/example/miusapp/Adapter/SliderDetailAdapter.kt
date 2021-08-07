@@ -18,11 +18,13 @@ import com.example.miusapp.R
 import com.example.miusapp.Utils.prefs
 
 class SliderDetailAdapter internal constructor(
+    categoryTitle: String,
     detailItems: MutableList<SliderDetailItem>,
     context: Context,
     fragmentManager: FragmentManager
 ): RecyclerView.Adapter<SliderDetailAdapter.SliderDetailViewHolder>() {
 
+    private var categoryTitle: String
     private val detailItems: List<SliderDetailItem>
     private var context: Context
     private var fragmentManager: FragmentManager
@@ -31,6 +33,7 @@ class SliderDetailAdapter internal constructor(
         this.detailItems = detailItems
         this.context = context
         this.fragmentManager = fragmentManager
+        this.categoryTitle = categoryTitle
     }
 
     class SliderDetailViewHolder(itemView: View, context: Context) : RecyclerView.ViewHolder(itemView){
@@ -48,9 +51,8 @@ class SliderDetailAdapter internal constructor(
     override fun onBindViewHolder(holder: SliderDetailViewHolder, position: Int) {
         prefs.myDesc = detailItems[position].title
         holder.tvDetailTitle.text = detailItems[position].title
-        holder.rvDetail.adapter = SliderDetailRvAdapter(detailItems[position].title, detailItems[position].items!!, context, fragmentManager)
+        holder.rvDetail.adapter = SliderDetailRvAdapter(categoryTitle, detailItems[position].title, detailItems[position].items!!, context, fragmentManager)
     }
-
 
     override fun getItemCount(): Int {
         return detailItems.size
