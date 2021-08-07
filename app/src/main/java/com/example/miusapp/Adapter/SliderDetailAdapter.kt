@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miusapp.AddItemToCategory
 import com.example.miusapp.DetailNavigationActivity
@@ -18,15 +19,18 @@ import com.example.miusapp.Utils.prefs
 
 class SliderDetailAdapter internal constructor(
     detailItems: MutableList<SliderDetailItem>,
-    context: Context
+    context: Context,
+    fragmentManager: FragmentManager
 ): RecyclerView.Adapter<SliderDetailAdapter.SliderDetailViewHolder>() {
 
     private val detailItems: List<SliderDetailItem>
     private var context: Context
+    private var fragmentManager: FragmentManager
 
     init {
         this.detailItems = detailItems
         this.context = context
+        this.fragmentManager = fragmentManager
     }
 
     class SliderDetailViewHolder(itemView: View, context: Context) : RecyclerView.ViewHolder(itemView){
@@ -44,7 +48,7 @@ class SliderDetailAdapter internal constructor(
     override fun onBindViewHolder(holder: SliderDetailViewHolder, position: Int) {
         prefs.myDesc = detailItems[position].title
         holder.tvDetailTitle.text = detailItems[position].title
-        holder.rvDetail.adapter = SliderDetailRvAdapter(detailItems[position].items!!, context)
+        holder.rvDetail.adapter = SliderDetailRvAdapter(detailItems[position].title, detailItems[position].items!!, context, fragmentManager)
     }
 
 

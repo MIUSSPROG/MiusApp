@@ -356,7 +356,7 @@ class DetailNavigationActivity : AppCompatActivity() {
                     }
 
 
-                    binding.viewPagerNavDetail.adapter = SliderDetailAdapter(categoryItems, this)
+                    binding.viewPagerNavDetail.adapter = SliderDetailAdapter(categoryItems, this, supportFragmentManager)
                     if(position == -1) {
                         binding.viewPagerNavDetail.currentItem = positionToGo
                     }

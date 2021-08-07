@@ -36,10 +36,14 @@ class AddItemFragment : BottomSheetDialogFragment() {
             info["question"] = desc
             info["answer"] = binding.etItemTextToSave.text.toString()
 
+            val newQuestionRef = db.collection("Users").document(prefs.myUUId)
+                .collection("Секции").document(title).collection("questions").document()
+
             db = FirebaseFirestore.getInstance()
             db.collection("Users").document(prefs.myUUId)
                 .collection("Секции").document(title).collection("questions")
-                .add(info)
+                .document(newQuestionRef.toString())
+                .set(info)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Секция создана!", Toast.LENGTH_SHORT).show()
                     binding.etItemTextToSave.setText("")
@@ -48,6 +52,19 @@ class AddItemFragment : BottomSheetDialogFragment() {
                 .addOnFailureListener {
                     Toast.makeText(requireContext(), "Произошла ошибка", Toast.LENGTH_SHORT).show()
                 }
+
+//            db = FirebaseFirestore.getInstance()
+//            db.collection("Users").document(prefs.myUUId)
+//                .collection("Секции").document(title).collection("questions")
+//                .add(info)
+//                .addOnSuccessListener {
+//                    Toast.makeText(requireContext(), "Секция создана!", Toast.LENGTH_SHORT).show()
+//                    binding.etItemTextToSave.setText("")
+//                    this.dismiss()
+//                }
+//                .addOnFailureListener {
+//                    Toast.makeText(requireContext(), "Произошла ошибка", Toast.LENGTH_SHORT).show()
+//                }
 
         }
 
