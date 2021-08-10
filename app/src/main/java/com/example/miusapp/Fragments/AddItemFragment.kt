@@ -46,7 +46,7 @@ class AddItemFragment : BottomSheetDialogFragment() {
                 .document(newQuestionId)
                 .set(info)
                 .addOnSuccessListener {
-                    Toast.makeText(requireContext(), "Секция создана!", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "Секция создана!", Toast.LENGTH_SHORT).show()
                     binding.etItemTextToSave.setText("")
                     this.dismiss()
                 }

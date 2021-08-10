@@ -3,6 +3,7 @@ package com.example.miusapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.miusapp.Fragments.DiagnosticMapFragment
 import com.example.miusapp.Fragments.UserHomeFragment
 import com.example.miusapp.databinding.ActivityNavigationBinding
 
@@ -21,6 +22,11 @@ class NavigationActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.nav_home -> {
                     loadFragment(UserHomeFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+
+                R.id.nav_analytics -> {
+                    loadFragment(DiagnosticMapFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
 

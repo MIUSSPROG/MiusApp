@@ -11,6 +11,7 @@
         <item>Планы</item>
     </string-array>
 
+    <string name="diagnosticMap">Диагностическая карта</string>
     <string name="sliderItem1">Программы</string>
     <string name="sliderItem2">Проекты</string>
     <string name="sliderItem3">Квалификация</string>
