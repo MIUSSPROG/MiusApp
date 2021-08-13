@@ -13,6 +13,7 @@ import com.example.miusapp.DetailNavigationActivity
 import com.example.miusapp.Model.Group
 import com.example.miusapp.Model.SliderRvItem
 import com.example.miusapp.R
+import com.example.miusapp.StudentListActivity
 
 class DiagnosticMapAdapter internal constructor(
     items: List<Group>,
@@ -52,21 +53,23 @@ class DiagnosticMapAdapter internal constructor(
                 formEducation.setBackgroundResource(R.drawable.rounded1)
             }
             formEducation.text = data.form
-            groupStudentCount.text = data.students.size.toString()
+            groupStudentCount.text = data.studentsCount.toString() //data.students.size.toString()
 
             itemView.setOnClickListener {
-
+                val intent = Intent(context, StudentListActivity::class.java)
+                intent.putExtra("id", data.id)
+                context.startActivity(intent)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return DiagnosticMapAdapter.DiagnosticMapViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.rv_item_diagnostic, parent, false))
+        return DiagnosticMapViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.rv_item_diagnostic, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
-            is DiagnosticMapAdapter.DiagnosticMapViewHolder -> {
+            is DiagnosticMapViewHolder -> {
                 holder.bind(context, items[position], position)
             }
         }

@@ -53,6 +53,7 @@ class DiagnosticMapFragment : Fragment() {
                 }
 
                 value?.let {
+                    groupList.clear()
                     for (document in it.documents) {
                         val newItem = document.toObject(Group::class.java)
                         if (newItem != null) {

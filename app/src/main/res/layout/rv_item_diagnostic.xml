@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
@@ -20,17 +20,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/selected_menu_color"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvGroupNumber"
-                app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tvGroupNumber"
@@ -41,7 +31,7 @@
                 android:textColor="#000"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,7 +43,7 @@
                 android:text="14-18 лет"
                 android:textAlignment="center"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupNumber" />
 
@@ -65,7 +55,7 @@
                 android:text="31 мая -"
                 android:textAlignment="center"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupAge" />
 
@@ -76,7 +66,7 @@
                 android:text="4 июня"
                 android:textAlignment="center"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvGroupDateStart" />
 
@@ -92,7 +82,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintStart_toEndOf="@+id/guideline3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -121,6 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/rounded3"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -128,6 +119,7 @@
                 android:text="дистанционно"
                 android:textColor="#000"
                 android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -136,7 +128,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.28" />
+                app:layout_constraintGuide_percent="0.35" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:background="@color/selected_menu_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -80,6 +80,7 @@ class AddGroupFragment : BottomSheetDialogFragment() {
             group["dateEnd"] = dateRangeMas[1].trim()
             group["name"] = binding.etGroupName.text.toString()
             group["form"] = binding.switchModeGroup.text.toString()
+            group["studentsCount"] = 0
 
             db.collection("Users").document(prefs.myUUId)
                 .collection("Секции").document(resources.getString(R.string.diagnosticMap)).collection("группы")

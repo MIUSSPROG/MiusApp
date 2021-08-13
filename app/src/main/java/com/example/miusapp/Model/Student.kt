@@ -1,6 +1,7 @@
 package com.example.miusapp.Model
 
 class Student internal constructor(
+    val id: String = "",
     val name: String = "",
     val age: Int = 0,
     val percentComplete: Int = 0,
