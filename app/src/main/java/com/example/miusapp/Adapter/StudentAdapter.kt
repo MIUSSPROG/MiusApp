@@ -2,6 +2,7 @@ package com.example.miusapp.Adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miusapp.Model.Group
 import com.example.miusapp.Model.Student
 import com.example.miusapp.R
+import com.example.miusapp.StudentDetailActivity
 
 class StudentAdapter internal constructor(
     students: MutableList<Student>,
@@ -36,6 +38,9 @@ class StudentAdapter internal constructor(
             studentAge.text = data.age.toString() + " лет"
             studentPercentComplete.text = data.percentComplete.toString()
             pbPercentComplete.progress = data.percentComplete
+            itemView.setOnClickListener {
+                context.startActivity(Intent(context, StudentDetailActivity::class.java))
+            }
         }
     }
 
