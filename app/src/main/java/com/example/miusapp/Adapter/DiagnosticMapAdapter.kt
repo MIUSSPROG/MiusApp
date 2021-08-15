@@ -42,8 +42,10 @@ class DiagnosticMapAdapter internal constructor(
             groupPos.text = (position + 1).toString() + " группа"
             groupName.text = data.name
             groupAge.text = data.ageFrom.toString() + "-" + data.ageTo.toString() + " лет"
-            groupDateStart.text = data.dateStart + "-"
-            groupDateEnd.text = data.dateEnd
+            val dateStart = data.dateStart.replace('/','.')
+            groupDateStart.text = dateStart + "-"
+            val dateEnd = data.dateEnd.replace('/','.')
+            groupDateEnd.text = dateEnd
             if (data.form == "Очно"){
                 formEducation.setTextColor(Color.BLACK)
                 formEducation.setBackgroundResource(R.drawable.rounded3)

@@ -34,6 +34,18 @@ class AddStudentFragment : BottomSheetDialogFragment() {
             info["name"] = binding.etStudentFio.text.toString()
             info["age"] = binding.etStudentAge.text.toString().toInt()
             info["percentComplete"] = 0
+            info["theorTrain1First"] = 0
+            info["theorTrain1Second"] = 0
+            info["theorTrain2First"] = 0
+            info["theorTrain2Sedond"] = 0
+            info["practicTrain1First"] = 0
+            info["practicTrain1Second"] = 0
+            info["practicTrain2First"] = 0
+            info["practicTrain2Second"] = 0
+            info["practicTrain3First"] = 0
+            info["practicTrain3Second"] = 0
+            info["generalTrain1First"] = 0
+            info["generalTrain1Second"] = 0
 
             db.collection("Users").document(prefs.myUUId)
                 .collection("Секции").document(resources.getString(R.string.diagnosticMap)).collection("группы")

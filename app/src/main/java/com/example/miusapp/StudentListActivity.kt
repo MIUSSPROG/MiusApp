@@ -31,7 +31,7 @@ class StudentListActivity : AppCompatActivity() {
         setContentView(binding.root)
         val groupId = intent.extras?.get("id").toString()
 
-        binding.rvStudents.adapter = StudentAdapter(studentList, this)
+        binding.rvStudents.adapter = StudentAdapter(studentList, groupId, this)
         db = FirebaseFirestore.getInstance()
         db.collection("Users").document(prefs.myUUId)
             .collection("Секции").document(resources.getString(R.string.diagnosticMap)).collection("группы")

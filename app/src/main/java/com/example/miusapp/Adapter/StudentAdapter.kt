@@ -16,13 +16,16 @@ import com.example.miusapp.StudentDetailActivity
 
 class StudentAdapter internal constructor(
     students: MutableList<Student>,
+    groupId: String,
     context: Context
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     private var students: List<Student> = ArrayList()
+    private var groupId: String
     var context: Context
 
     init {
         this.students = students
+        this.groupId = groupId
         this.context = context
     }
 
@@ -33,13 +36,17 @@ class StudentAdapter internal constructor(
         val pbPercentComplete: ProgressBar = itemView.findViewById(R.id.pbProgressComplete)
 
         @SuppressLint("ResourceType")
-        fun bind(context: Context, data: Student, position: Int){
+        fun bind(context: Context, data: Student, position: Int, groupId: String){
             studentName.text = data.name
             studentAge.text = data.age.toString() + " лет"
             studentPercentComplete.text = data.percentComplete.toString()
             pbPercentComplete.progress = data.percentComplete
             itemView.setOnClickListener {
-                context.startActivity(Intent(context, StudentDetailActivity::class.java))
+                val intent = Intent(context, StudentDetailActivity::class.java)
+                intent.putExtra("studentId", data.id)
+                intent.putExtra("studentName", data.name)
+                intent.putExtra("groupId", groupId)
+                context.startActivity(intent)
             }
         }
     }
@@ -51,7 +58,7 @@ class StudentAdapter internal constructor(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is StudentViewHolder -> {
-                holder.bind(context, students[position], position)
+                holder.bind(context, students[position], position, groupId)
             }
         }
     }
