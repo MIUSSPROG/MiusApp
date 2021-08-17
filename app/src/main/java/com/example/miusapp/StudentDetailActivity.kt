@@ -20,6 +20,7 @@ class StudentDetailActivity : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var groupId: String
     private lateinit var studentId: String
+    private lateinit var studentCardTrain: StudentCardTrain
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +34,16 @@ class StudentDetailActivity : AppCompatActivity() {
         groupId = intent.extras?.get("groupId").toString()
         studentId = intent.extras?.get("studentId").toString()
 
-        binding.tvStudentCardName.text = studentName.toString()
+        binding.tvStudentCardName.text = studentName
 
         binding.btnBackStudentDetail.setOnClickListener {
             finish()
         }
+
+        // CompoundView
+
+        studentCardTrain = binding.studentCardTrain1
+        studentCardTrain.setData(groupId,studentId,"Выступать перед аудиторией", "generalTrain2First", "generalTrain2Second")
 
         // UPDATES
         db.collection("Users").document(prefs.myUUId)
@@ -377,7 +383,7 @@ class StudentDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun saveValueToDB(name: String, value: Int){
+    private fun saveValueToDB(name: String, value: Int){
         db.collection("Users").document(prefs.myUUId)
             .collection("Секции").document(resources.getString(R.string.diagnosticMap)).collection("группы")
             .document(groupId).collection("студенты")
