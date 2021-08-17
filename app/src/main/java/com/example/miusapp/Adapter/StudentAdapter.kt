@@ -39,8 +39,9 @@ class StudentAdapter internal constructor(
         fun bind(context: Context, data: Student, position: Int, groupId: String){
             studentName.text = data.name
             studentAge.text = data.age.toString() + " лет"
-            studentPercentComplete.text = data.percentComplete.toString()
-            pbPercentComplete.progress = data.percentComplete
+            val completion = calculateCompletion(data)
+            studentPercentComplete.text = completion.toString()
+            pbPercentComplete.progress = completion
             itemView.setOnClickListener {
                 val intent = Intent(context, StudentDetailActivity::class.java)
                 intent.putExtra("studentId", data.id)
@@ -48,6 +49,108 @@ class StudentAdapter internal constructor(
                 intent.putExtra("groupId", groupId)
                 context.startActivity(intent)
             }
+        }
+
+        private fun calculateCompletion(item: Student) : Int{
+            var count = 0
+            if (item.theorTrain1First != 0){
+                count++
+            }
+            if (item.theorTrain1Second != 0){
+                count++
+            }
+            if (item.theorTrain2First != 0){
+                count++
+            }
+            if (item.theorTrain2Second != 0){
+                count++
+            }
+            if (item.practicTrain1First != 0){
+                count++
+            }
+            if (item.practicTrain1Second != 0){
+                count++
+            }
+            if (item.practicTrain2First != 0){
+                count++
+            }
+            if (item.practicTrain2Second != 0){
+                count++
+            }
+            if (item.practicTrain3First != 0){
+                count++
+            }
+            if (item.practicTrain3Second != 0){
+                count++
+            }
+            if (item.generalTrain1First != 0){
+                count++
+            }
+            if (item.generalTrain1Second != 0){
+                count++
+            }
+            if (item.generalTrain2First != 0){
+                count++
+            }
+            if (item.generalTrain2Second != 0){
+                count++
+            }
+            if (item.generalTrain3First != 0){
+                count++
+            }
+            if (item.generalTrain3Second != 0){
+                count++
+            }
+            if (item.generalTrain4First != 0){
+                count++
+            }
+            if (item.generalTrain4Second != 0){
+                count++
+            }
+            if (item.generalTrain5First != 0){
+                count++
+            }
+            if (item.generalTrain5Second != 0){
+                count++
+            }
+            if (item.generalTrain6First != 0){
+                count++
+            }
+            if (item.generalTrain6Second != 0){
+                count++
+            }
+            if (item.generalTrain7First != 0){
+                count++
+            }
+            if (item.generalTrain7Second != 0){
+                count++
+            }
+            if (item.generalTrain8First != 0){
+                count++
+            }
+            if (item.generalTrain8Second != 0){
+                count++
+            }
+            if (item.generalTrain9First != 0){
+                count++
+            }
+            if (item.generalTrain9Second != 0){
+                count++
+            }
+            if (item.generalTrain10First != 0){
+                count++
+            }
+            if (item.generalTrain10Second != 0){
+                count++
+            }
+            if (item.generalTrain11First != 0){
+                count++
+            }
+            if (item.generalTrain11Second != 0){
+                count++
+            }
+
+            return (count*100)/32
         }
     }
 
@@ -62,6 +165,7 @@ class StudentAdapter internal constructor(
             }
         }
     }
+
 
     override fun getItemCount(): Int {
         return students.size
