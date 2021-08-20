@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiusApp">
-        <activity android:name=".StudentDetailActivity"></activity>
+        <activity android:name=".AdminGraphActivity"></activity>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".Adapter.AddGroupActivity" />
+        <activity android:name=".StudentDetailActivity" />
         <activity android:name=".StudentListActivity" />
         <activity android:name=".AddItemToCategory" />
         <activity android:name=".DetailNavigationActivity" />

@@ -95,4 +95,21 @@
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="theor1">Теоретические знания, предусмотренные программой</string>
+    <string name="theor2">Владение специальной терминологией</string>
+    <string name="practic1">Практические умения и навыки, предусмотренные программой</string>
+    <string name="practic2">Владение специальным оборудованием и оснащением</string>
+    <string name="practic3">Творческие навыки</string>
+    <string name="general1">Подбирать и анализировать специальную литературу</string>
+    <string name="general2">Пользоваться источниками информации из коммуникационных сетей</string>
+    <string name="general3">Пользоваться программными продуктами и WEB-ресурсами</string>
+    <string name="general4">Осуществлять  учебно-исследовательскую работу</string>
+    <string name="general5">Слушать и слышать педагога, принимать во внимание мнение других людей</string>
+    <string name="general6">Выступать перед аудиторией</string>
+    <string name="general7">Участвовать в дискуссии, защищать свою точку зрения</string>
+    <string name="general8">Организовывать свое рабочее (учебное) место</string>
+    <string name="general9">Соблюдения в процессе деятельности правила ТБ</string>
+    <string name="general10">Аккуратно, ответственно выполнять работу</string>
+    <string name="general11">Умение планировать</string>
 </resources>

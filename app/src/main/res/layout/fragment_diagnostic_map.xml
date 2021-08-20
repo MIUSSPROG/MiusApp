@@ -20,7 +20,7 @@
             android:id="@+id/textView3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/montserrat_medium"
             android:text="Диагностическая карта"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -58,5 +58,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_24"
         app:tint="@color/white" />
+
+    <View
+        android:id="@+id/circle"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/circle_extention"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_add_group"
+        app:layout_constraintEnd_toEndOf="@+id/fab_add_group"
+        app:layout_constraintStart_toStartOf="@+id/fab_add_group"
+        app:layout_constraintTop_toTopOf="@+id/fab_add_group" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,12 +18,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        if(prefs.myUUId.isNotEmpty()){
+
+        if (prefs.myUUId == "-1"){
+            startActivity(Intent(this, AdminActivity::class.java))
+        }
+        else if(prefs.myUUId.isNotEmpty()){
             startActivity(Intent(this, NavigationActivity::class.java))
         }
-
+        else{
+            setContentView(binding.root)
+        }
         auth = FirebaseAuth.getInstance()
     }
 
@@ -32,15 +37,21 @@ class MainActivity : AppCompatActivity() {
         val pass = binding.etPassLogin.text.toString().trim()
 
         if (email.isNotEmpty() && pass.isNotEmpty()) {
-            auth.signInWithEmailAndPassword(email, pass)
-                .addOnSuccessListener {
-                    prefs.myUUId = auth.currentUser?.uid.toString()
-                    Toast.makeText(this, "Успешный вход!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, NavigationActivity::class.java))
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Произошла ошибка!", Toast.LENGTH_SHORT).show()
-                }
+            if (email == "admin" && pass == "admin"){
+                prefs.myUUId = "-1"
+                startActivity(Intent(this, AdminActivity::class.java))
+            }
+            else {
+                auth.signInWithEmailAndPassword(email, pass)
+                    .addOnSuccessListener {
+                        prefs.myUUId = auth.currentUser?.uid.toString()
+                        Toast.makeText(this, "Успешный вход!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, NavigationActivity::class.java))
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Произошла ошибка!", Toast.LENGTH_SHORT).show()
+                    }
+            }
         }
         else{
             Toast.makeText(this, "Заполните все поля!", Toast.LENGTH_SHORT).show()
@@ -49,5 +60,9 @@ class MainActivity : AppCompatActivity() {
 
     fun btnGoToReg(view: View) {
         startActivity(Intent(this, RegActivity::class.java))
+    }
+
+    override fun onBackPressed() {
+
     }
 }

@@ -9,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.miusapp.AdminGraphActivity
 import com.example.miusapp.DetailNavigationActivity
 import com.example.miusapp.Model.Group
 import com.example.miusapp.Model.SliderRvItem
 import com.example.miusapp.R
 import com.example.miusapp.StudentListActivity
+import com.example.miusapp.Utils.prefs
 
 class DiagnosticMapAdapter internal constructor(
     items: List<Group>,
@@ -57,11 +59,18 @@ class DiagnosticMapAdapter internal constructor(
             formEducation.text = data.form
             groupStudentCount.text = data.studentsCount.toString() //data.students.size.toString()
 
-            itemView.setOnClickListener {
-                val intent = Intent(context, StudentListActivity::class.java)
-                intent.putExtra("id", data.id)
-                context.startActivity(intent)
-            }
+                itemView.setOnClickListener {
+
+                    if (prefs.myUUId == "-1") {
+                        val intent = Intent(context, AdminGraphActivity::class.java)
+                        intent.putExtra("groupId", data.id)
+                        context.startActivity(intent)
+                    } else {
+                        val intent = Intent(context, StudentListActivity::class.java)
+                        intent.putExtra("id", data.id)
+                        context.startActivity(intent)
+                    }
+                }
         }
     }
 
