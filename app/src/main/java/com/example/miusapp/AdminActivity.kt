@@ -28,6 +28,10 @@ class AdminActivity : AppCompatActivity() {
                     loadFragment(AdminAnalyticsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
+                R.id.nav_account -> {
+                    loadFragment(UserAccountFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
 
 //                R.id.nav_admin_chat -> {
 //                    loadFragment(DiagnosticMapFragment())

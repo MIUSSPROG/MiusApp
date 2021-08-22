@@ -36,6 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:text="Иванов Иван Иванович"
@@ -76,12 +77,14 @@
                 android:id="@+id/tvStudentAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:text="14 лет"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvStudentName" />
+                app:layout_constraintStart_toStartOf="@+id/tvStudentName"
+                app:layout_constraintTop_toBottomOf="@+id/tvStudentName" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
